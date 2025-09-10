@@ -49,7 +49,7 @@ def add():
 @app.route('/edit/<int:id>', methods=['POST', 'GET'])
 def edit(id):
     conn = connectdb()
-    peminjaman = conn.execute("SELECT * FROM peminjaman WHERE id_peminjaman = ?", (id,)).fetchone()
+    peminjaman = conn.execute("SELECT * FROM peminjaman WHERE id_produk = ?", (id,)).fetchone()
     if not peminjaman:
         return "Data Toko tidak ditemukan", 404
     
@@ -69,7 +69,7 @@ def edit(id):
 @app.route('/delete/<int:id>')
 def delete(id):
     conn = connectdb()
-    conn.execute("DELETE FROM peminjaman WHERE id_peminjaman = ?", (id,))
+    conn.execute("DELETE FROM peminjaman WHERE id_produk = ?", (id,))
     conn.commit()
     conn.close()
     return redirect(url_for('index'))
