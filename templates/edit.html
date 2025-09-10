@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Data Toko</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!--Fungsi Flask untuk mengarahkan ke file CSS di folder static-->
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Edit Data Toko</h1>
+    <form method="post" class="form">
+        <label>Nama Produk:</label>
+        <input type="text" name="nama_produk" value="{{ peminjaman.nama_produk }}" required>
+        <label>Harga:</label>
+        <input type="text" name="harga" value="{{ peminjaman.harga }}" required>
+        <label>Stok:</label>
+        <input type="text" name="stok" value="{{ peminjaman.stok }}" required>
+        <label>Deskripsi:</label>
+        <input type="text" name="deskripsi" value="{{ peminjaman.deskripsi }}" required>
+        <div class="form-actions">
+        <button type="submit" class="btn primary">Update</button>
+        <a href="{{ url_for('index') }}"><button type="button" class="btn">Kembali</button></a>
+    </div>
+    </form>
+</div>
+</body>
+</html>

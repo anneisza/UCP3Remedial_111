@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DATA TOKO ONLINE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!--Fungsi Flask untuk mengarahkan ke file CSS di folder static-->
+</head>
+<body>
+<div class="container">
+    <h1 class="title">DATA TOKO ONLINE</h1>
+    <div class="actions">
+        <a href="{{ url_for('add') }}"><button class="btn primary">➕ Tambah Data</button></a>
+    </div>
+    <br>    
+    <div class="card-list">
+        {% for b in pinjam %}
+    <div class="card">
+        <h3>{{ b.nama_produk }}</h3>
+        <p>{{ b.harga }}</p>
+        <p>{{ b.stok }}</p>
+        <p>{{ b.deskripsi }}</p>
+        <div class="card-actions">
+            <a href="{{ url_for('edit', id=b.id_produk) }}"><button class="btn">Edit</button></a>
+            <a href="{{ url_for('delete', id=b.id_produk) }}"><button class="btn danger">Hapus</button></a>
+        </div>
+    </div>
+    {% else %}
+    <p class="empty">Belum data toko online 📭</p>
+    {% endfor %}
+    </div>
+</div>
+</body>
+</html>
